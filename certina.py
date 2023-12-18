@@ -40,7 +40,7 @@ WARNING: Might be dangerous with use of self created sockets, use with caution
 """
 def grabWithSocket(endpoint, filePointer):
     printWriter(f"<<<<-----Analysing {endpoint} Certificate----->>>>", filePointer, YELLOW)
-    printWriter("[!] WARNING: Grabbing certificate with socket", filePointer)
+    printWriter("[!] WARNING: Grabbing certificate with socket", filePointer, YELLOW)
     dst = (endpoint, 443)
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.settimeout(5) # Set 5s timeout for unreachable hosts
@@ -84,7 +84,7 @@ def getCertificateInfo(x509Cert, filePointer):
     try:
         commonName = x509Cert.subject.get_attributes_for_oid(x509.oid.NameOID.COMMON_NAME)[0].value
     except:
-        printWriter("[!] Failed to get cert info, please check domain or add www.", filePointer)
+        printWriter("[!] Failed to get cert info, please check domain or add www.", filePointer, RED)
         exit()
 
     # Multi try blocks to catch empty values

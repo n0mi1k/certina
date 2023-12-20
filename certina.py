@@ -350,6 +350,10 @@ def main():
         exit()
                  
     for endpoint in endpoints:
+        if 'http://' in endpoint or 'https://' in endpoint:
+            print(f"{RED}[!] Error: Enter a domain without scheme{RESET}")
+            continue
+
         if not args.socket:
             parsedCert = grabCertificate(endpoint, filePointer)
         else:

@@ -36,5 +36,8 @@ FLAGS:
 - Output results to file      
 `python3 certina.py -d example.com -o output.txt`
 
+## Dependencies
+To install Python dependencies, run `pip install -r requirements.txt`
+
 ## Disclaimer
 This tool is for educational and testing purposes only. Do not use it to exploit the vulnerability on any system that you do not own or have permission to test. The authors of this script are not responsible for any misuse or damage caused by its use.

@@ -14,6 +14,7 @@ FLAGS:
    -o, --output      Output filename to save results
    -c, --certonly    Show only certificate info without further enumeration (Default: False)
    -r, --request     Follow up with GET request to check web-alive (Default: False)
+   -a, --all         Crawl all HTTPS domains (Coming soon)
 ```
 
 ## Example Usage

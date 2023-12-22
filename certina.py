@@ -168,13 +168,13 @@ def extractSAN(endpoint, sanList, requestFlag, filePointer):
     for d in sanUniq:
         if requestFlag:
             status, title, urlScheme = reqDomain(d)
-            if title:
-                printWriter(f"{d} [{urlScheme}] [{status}] [{title}]", filePointer)
-            else:
-                if urlScheme:
-                    printWriter(f"{d} [{urlScheme}] [{status}]", filePointer)
+            if status:
+                if title:
+                    printWriter(f"{d} [{urlScheme}] [{status}] [{title}]", filePointer)
                 else:
-                    printWriter(f"{d} [{status}]", filePointer)
+                    printWriter(f"{d} [{urlScheme}] [{status}]", filePointer)
+            else:
+                printWriter(f"{d}", filePointer)
         else:
             printWriter(d, filePointer)
     return sanUniq
@@ -219,13 +219,13 @@ def crtshQuery(domain, requestFlag, filePointer):
     for d in crtUniq:
         if requestFlag:
             status, title, urlScheme = reqDomain(d)
-            if title:
-                printWriter(f"{d} [{urlScheme}] [{status}] [{title}]", filePointer)
-            else:
-                if urlScheme:
-                    printWriter(f"{d} [{urlScheme}] [{status}]", filePointer)
+            if status:
+                if title:
+                    printWriter(f"{d} [{urlScheme}] [{status}] [{title}]", filePointer)
                 else:
-                    printWriter(f"{d} [{status}]", filePointer)
+                    printWriter(f"{d} [{urlScheme}] [{status}]", filePointer)
+            else:
+                printWriter(f"{d}", filePointer)
         else:
             printWriter(d, filePointer)
 
@@ -274,9 +274,9 @@ def reqDomain(domain, timeout=2, urlScheme="https"):
             r = requests.get('http://' + domain.strip(), timeout=timeout, allow_redirects=True, headers={'User-Agent':USERAGENT})
             urlScheme="http"
         except TimeoutError:
-            return "x", None, None
+            return None, None, None
         except:
-            return "x", None, None
+            return None, None, None
     
     searchTitle = re.search(r'(?<=<title>).*(?=</title>)', r.text, re.IGNORECASE)
     if searchTitle is not None:
@@ -350,9 +350,12 @@ def main():
         exit()
                  
     for endpoint in endpoints:
-        if 'http://' in endpoint or 'https://' in endpoint:
-            print(f"{RED}[!] Error: Enter a domain without scheme{RESET}")
-            continue
+        if 'http://' in endpoint:
+            print(f"{RED}[!] Scheme http:// included, stripping away...{RESET}") 
+            endpoint = endpoint.lstrip('http://')
+        elif 'https://' in endpoint:
+            print(f"{RED}[!] Scheme http:// included, stripping away...{RESET}")
+            endpoint = endpoint.lstrip('https://')
 
         if not args.socket:
             parsedCert = grabCertificate(endpoint, filePointer)

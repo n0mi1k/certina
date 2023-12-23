@@ -28,9 +28,6 @@ FLAGS:
 `python3 certina.py -d "example.com, example2.com"` or   
 `python3 certina.py -i input.txt`
 
-- Only grab certificate info and SAN extension domains  
-`python3 certina.py -d example.com -c`
-
 - Running with raw socket mode without SSL library  
 `python3 certina.py -d example.com -s`
 

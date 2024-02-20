@@ -38,7 +38,7 @@ FLAGS:
 `python3 certina.py -d example.com -o output.txt`
 
 ## Demonstration
-<img width="480" alt="CleanShot 2024-02-20 at 23 16 12@2x" src="https://github.com/n0mi1k/certina/assets/28621928/da1822ef-f023-4e5f-93a5-bc638ab3e41a">
+<img width="480" alt="CleanShot 2024-02-20 at 23 22 36@2x" src="https://github.com/n0mi1k/certina/assets/28621928/b5f3fdf5-7aa4-4c4a-8713-7b2e8ceb3674">
 
 ## Dependencies
 To install Python dependencies, run `pip install -r requirements.txt`

@@ -1,5 +1,5 @@
 # certina
-certina is an information gathering tool for red teamers to discover subdomains from web certificates.
+certina is an information gathering tool for red teamers to discover subdomains from web certificate data.  
 
 ## Options
 ```console
@@ -17,9 +17,12 @@ FLAGS:
    -a, --all         Crawl all HTTPS domains (Coming soon)
 ```
 
-## Example Usage
-- Full enumeration on SAN/crt.sh and check if web-alive  
+## Running Certina
+- Full enumeration with SAN extension, cert transparency logs (crt.sh) and check if web-alive **(Recommended)**  
 `python3 certina.py -d example.com -r`
+
+- Full quiet enumeration with SAN extension, cert transparency logs (crt.sh)  
+`python3 certina.py -d example.com`
 
 - Only grab certificate info and SAN extension domains  
 `python3 certina.py -d example.com -c`
@@ -33,6 +36,9 @@ FLAGS:
 
 - Output results to file      
 `python3 certina.py -d example.com -o output.txt`
+
+## Demonstration
+<img width="480" alt="CleanShot 2024-02-20 at 23 16 12@2x" src="https://github.com/n0mi1k/certina/assets/28621928/da1822ef-f023-4e5f-93a5-bc638ab3e41a">
 
 ## Dependencies
 To install Python dependencies, run `pip install -r requirements.txt`

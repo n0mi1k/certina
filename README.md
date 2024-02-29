@@ -21,7 +21,7 @@ FLAGS:
 - Full enumeration with SAN extension, cert transparency logs (crt.sh) and check if web-alive **(Recommended)**  
 `python3 certina.py -d example.com -r`
 
-- Full quiet enumeration with SAN extension, cert transparency logs (crt.sh)  
+- Quiet enumeration with SAN extension, cert transparency logs [Sends ONLY 1 request to grab the cert]   
 `python3 certina.py -d example.com`
 
 - Only grab certificate info and SAN extension domains  

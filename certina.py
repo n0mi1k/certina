@@ -194,7 +194,11 @@ def crtshQuery(domain, requestFlag, filePointer):
     except Exception as e:
         crtResult = False
         printWriter(f"-----Error or no results from crt.sh-----", filePointer, RED)
-        return None
+        return crtList
+
+    if r.status_code != 200:
+        printWriter(f"-----Error resp from crt.sh [status: {r.status_code}]-----", filePointer, RED)
+        return crtList
     
     if crtResult:
         for result in jsonResult:
